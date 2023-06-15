@@ -1,5 +1,5 @@
 # ubuntu_docker_dev
-Development environment Docker container with Ubuntu 22.04 and CUDA 12.1 support.
+Development environment Docker container with Ubuntu 22.04 and CUDA 11.8 support.
 
 I created this in an effort to learn more about Docker and then it turned into something incredibly useful. There are other repos that have similar setups but in the end I wasn't able to find what I was looking for so I made this. The Dockerfile I've included here has the base packages needed to create a useful base image. If more packages are needed they should be added separately of course - I've been using this as a base image to work with different projects. 
 
