@@ -1,15 +1,7 @@
-FROM nvidia/cuda:11.8.0-base-ubuntu22.04
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
 ENV HOME /home
 SHELL ["/bin/bash", "-c"]
-
-RUN DEBIAN_FRONTEND=noninteractive \
- && apt-get update \
- && apt-get install -y \
-    tzdata \
- && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime \
- && dpkg-reconfigure --frontend noninteractive tzdata \
- && apt-get clean 
 
 # Install base packages.
 RUN apt-get update && \
@@ -18,23 +10,25 @@ RUN apt-get update && \
   wget \ 
   curl \ 
   sudo \
+  bash-completion \
+  gdb \
+  build-essential \ 
   software-properties-common \
-  nvidia-cuda-toolkit 
+  cmake \ 
+  cmake-curses-gui \
+  gdb \ 
+  python3-pip \
+  python3-venv 
 
 # Install other packages.
 RUN apt-get update && \
   apt-get install -y \
-  cmake \ 
-  cmake-curses-gui \
   git \
-  build-essential \ 
-  bash-completion \
-  gdb \
   vim \ 
   ninja-build \
-  tree \ 
-  && apt-get clean -qq \
-  && rm -rf /var/lib/apt/lists/*
+  tree \
+  htop \
+  && apt-get clean -qq 
 
 # Create user and add it to sudo group.
 ARG user_id=dev
