@@ -1,3 +1,8 @@
 #!/bin/bash 
 
-docker build -t dev/dev_build:0.1 -f Dockerfile .
+CONTAINER_NAME="dantorres3600/cuda_dev_base"
+TAG="latest"
+
+docker build \
+  -t ${CONTAINER_NAME}:${TAG} \
+  -f Dockerfile .
